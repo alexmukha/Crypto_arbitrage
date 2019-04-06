@@ -1,12 +1,7 @@
 {
   "development": {
-<<<<<<< HEAD
-    "username": "ucdproject2",
-    "password": "mybootcamp19",
-=======
     "username": "root",
     "password": "Cali2015",
->>>>>>> a8d8423a067f7cc44c642bf72f3fcc4a5e5785c3
     "database": "exampledb",
     "host": "localhost",
     "dialect": "mysql"
