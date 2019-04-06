@@ -1,4 +1,5 @@
 var db = require("../models");
+var getPrice = require('../prices')
 
 module.exports = function(app) {
   // Load index page

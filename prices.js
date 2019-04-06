@@ -14,39 +14,19 @@ cobinhood.options({
     'verbose': true
 });
 
-function getPrices() {
-
+function getPrices(currency) {
 
 //Getting the Prices for Ripple from Binance
-  binance.prices('BTCUSDT', (error, ticker) => {
+  binance.prices(`${currency.toUpperCase()}USDT`, (error, ticker) => {
     if (!error) {
-    console.log("Binance Bitcoin price of BTC is: ", ticker.BTCUSDT);
+    console.log(`Binance price of ${currency} is:`, ticker.BTCUSDT);
     }
   });
-
-  binance.prices('ETHUSDT', (error, ticker) => {
+  cobinhood.lastPrice(`${currency.toUpperCase()}-USDT`, (error, lastPrice) => {
     if (!error) {
-    console.log("Binance Ethereum price is: ", ticker.ETHUSDT);
+        console.log(`Cobinhood price of ${currency} is:`, lastPrice);
     }
   });
-
-  cobinhood.lastPrice("BTC-USDT", (error, lastPrice) => {
-    if (!error) {
-        console.log("Cobinhood Bitcoin last price:", lastPrice);
-    }
-});
-  cobinhood.lastPrice("ETH-USDT", (error, lastPrice) => {
-    if (!error) {
-      console.log("Cobinhood Ethereum last price:", lastPrice);
-  }
-});
-
-
-
 };
-
-
-setInterval(getPrices,5000)
-
 
 module.exports = getPrices;
