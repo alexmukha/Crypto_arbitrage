@@ -4,8 +4,7 @@ var exphbs = require("express-handlebars");
 var db = require("./models");
 var pricesJs = require("./prices")
 
-
-pricesJs();
+pricesJs("BTC");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
