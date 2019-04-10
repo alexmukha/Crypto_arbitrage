@@ -2,9 +2,9 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 var db = require("./models");
-var pricesJs = require("./prices")
+var prices = require("./prices")
 
-pricesJs("BTC");
+prices.getPrice("BTC");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
