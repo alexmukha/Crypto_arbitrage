@@ -14,7 +14,7 @@ cobinhood.options({
     'verbose': true
 });
 
-function getTicker(currency, callback) {
+function get_Bin(currency, callback) {
 
 //Getting the Prices for Ripple from Binance
   binance.prices(`${currency.toUpperCase()}USDT`, (error, ticker) => {
@@ -26,20 +26,22 @@ function getTicker(currency, callback) {
     }
   });
 }
-
-function getPrice(currency, callback) {
+function get_Cob(currency, callback) {
   cobinhood.lastPrice(`${currency.toUpperCase()}-USDT`, (error, lastPrice) => {
     if (!error) {
         console.log(`Cobinhood price of ${currency} is:`, lastPrice);
         if (callback) {
           callback(lastPrice);
         }
-        
     }
   });
 };
 
+
+
+
+
 module.exports = {
-  getPrice: getPrice,
-  getTicker: getTicker
+  getCob: get_Cob,
+  getBin: get_Bin
 };

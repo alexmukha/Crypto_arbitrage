@@ -6,6 +6,12 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
+  getPrices: function() {
+    return $.ajax({
+      url: "api/prices",
+      type: "GET"
+    })
+  },
   saveExample: function(example) {
     return $.ajax({
       headers: {
@@ -97,3 +103,14 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+function updatePrices() {
+  API.getPrices()
+  .then(function(prices) {
+    console.log(prices)
+    $('#price-btc').text(prices.btc);
+
+  });
+
+}
+setInterval(updatePrices, 10*1000);
