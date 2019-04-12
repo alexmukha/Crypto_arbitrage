@@ -38,9 +38,6 @@ function get_Cob(currency, callback) {
 };
 
 
-
-
-
 module.exports = {
   getCob: get_Cob,
   getBin: get_Bin

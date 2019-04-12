@@ -3,9 +3,10 @@ body {
 }
 
 h1{
-  color:white;
+  color: white;
   margin: 40px 40px 40px 330px;
 }
+
 
 .cobinhood img{
   float:left;
@@ -54,4 +55,30 @@ top: -230px;
 
 .list-group-item {
   line-height: 2.5;
+}
+
+.assets_binance {
+  color: yellow;
+  size: 28px;
+}
+
+.assets_cobinhood {
+  color: green;
+  size: 28px;
+}
+
+.lambo_1 img {
+  position: relative;
+  top: -980px;
+  left: 750px;
+  width: 400px;
+  height: 150px;
+}
+
+.lambo_2 img {
+  position: relative;
+  top: -1150px;
+  left: -100px;
+  width: 400px;
+  height: 150px;
 }

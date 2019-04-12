@@ -8,10 +8,18 @@ var $exampleList = $("#example-list");
 var API = {
   getPrices: function() {
     return $.ajax({
-      url: "api/prices",
+      url: "api/pricesBin",
       type: "GET"
     })
   },
+
+  getPrices_cob: function() {
+    return $.ajax({
+      url: "api/pricesCob",
+      type: "GET"
+    })
+  },
+
   saveExample: function(example) {
     return $.ajax({
       headers: {
@@ -109,8 +117,25 @@ function updatePrices() {
   .then(function(prices) {
     console.log(prices)
     $('#price-btc').text(prices.btc);
+    $('#price-eth').text(prices.eth);
+    $('#price-xrp').text(prices.xrp);
+    $('#price-eos').text(prices.eos);
+    $('#price-neo').text(prices.neo);
 
   });
-
 }
+
+function updatePrices_Cob() {
+  API.getPrices_cob()
+  .then(function(prices_cob) {
+    console.log(prices_cob)
+    $('#price-btc-cob').text(prices_cob.btc_cob);
+    $('#price-eth-cob').text(prices_cob.eth_cob);
+    $('#price-xrp-cob').text(prices_cob.xrp_cob);
+    $('#price-eos-cob').text(prices_cob.eos_cob);
+    $('#price-neo-cob').text(prices_cob.neo_cob);
+  });
+}
+
 setInterval(updatePrices, 10*1000);
+setInterval(updatePrices_Cob, 10*1000);
