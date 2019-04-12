@@ -2,7 +2,7 @@ var db = require("../models");
 var prices = require('../prices')
 
 module.exports = function(app) {
-  app.get("/api/prices", function(req, res) {
+  app.get("/api/pricesBin", function(req, res) {
     prices.getBin("BTC", function(btc) {
       console.log("BTC Price:", btc);
       
@@ -33,23 +33,33 @@ module.exports = function(app) {
 });
 
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
+  app.get("/api/pricesCob", function(req, res) {
+    prices.getCob("BTC", function(BTC_cob) {
+      console.log("BTC Price:", BTC_cob);
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
+      prices.getCob("ETH", function(ETH_cob) {
+        console.log("ETH Price:", ETH_cob);
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+        prices.getCob("EOS", function(EOS_cob) {
+          console.log("EOS Price:", EOS_cob);
+
+          prices.getCob("NEO", function(NEO_cob) {
+            console.log("NEO Price:", NEO_cob);
+            
+            prices.getCob("XRP", function(XRP_cob) {
+              console.log("XRP Price:", XRP_cob);
+
+              res.json({
+                  btc_cob: BTC_cob,
+                  eth_cob: ETH_cob,
+                  eos_cob: EOS_cob,
+                  neo_cob: NEO_cob,
+                  xrp_cob: XRP_cob
+              });
+           });
+         });
+       });
     });
-  });
+  })
+});
 };
