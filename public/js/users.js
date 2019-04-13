@@ -1,7 +1,7 @@
 // when user clicks add-btn
 console.log("Blahblah")
 $(document).ready(()=>{
-  alert("JS Connected")
+
   $("#add-btn").on("click", function(event) {
     event.preventDefault();
     console.log("Adding new users...");

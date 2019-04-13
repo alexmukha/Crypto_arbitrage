@@ -4,6 +4,7 @@
 module.exports = function(sequelize, DataTypes) {
   console.log("Model created!!!!!!!!!!!!!!!!!!!!!!!")
   var Users = sequelize.define("users", {
+    
     name: DataTypes.STRING,
     password: DataTypes.STRING,
     coin1: DataTypes.STRING,
