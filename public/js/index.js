@@ -20,16 +20,17 @@ var API = {
     })
   },
 
-  saveExample: function(example) {
+  create: function(example) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
+      url: "api/resister",
       data: JSON.stringify(example)
     });
   },
+
   getExamples: function() {
     return $.ajax({
       url: "api/examples",

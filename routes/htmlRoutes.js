@@ -3,8 +3,18 @@ var prices = require('../prices')
 
 
 module.exports = function(app) {
-  // Load index page
   app.get("/", function(req, res) {
+    res.render("login");
+  });
+  app.get("/users", function(req, res) {
+    res.render("users");
+  });
+  app.get("/register", function(req, res) {
+    res.render("register");
+  });
+
+  // Load index page
+  app.get("/home", function(req, res) {
     prices.getBin("BTC", function(btc) {
       console.log("BTC Price:", btc);
       
