@@ -3,9 +3,12 @@ CREATE DATABASE cryptodb;
 USE cryptodb;
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(45) NULL,
+  login VARCHAR(45) NULL,
   password VARCHAR(45) NULL,
   coin1 VARCHAR(45) NULL,
   coin2 VARCHAR(45) NULL,
+  coin3 VARCHAR(45) NULL,
+  coin4 VARCHAR(45) NULL,
+  coin5 VARCHAR(45) NULL,
   PRIMARY KEY (id)
 );

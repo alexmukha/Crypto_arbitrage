@@ -6,6 +6,7 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
+  
   getPrices: function() {
     return $.ajax({
       url: "api/pricesBin",
@@ -26,17 +27,30 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/resister",
+      url: "api/register",
       data: JSON.stringify(example)
     });
   },
 
-  getExamples: function() {
+  create: function(example) {
     return $.ajax({
-      url: "api/examples",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/profile",
+      data: JSON.stringify(example)
+    });
+  },
+
+  getUsers: function() {
+    return $.ajax({
+      url: "api/login",
       type: "GET"
     });
   },
+
+
   deleteExample: function(id) {
     return $.ajax({
       url: "api/examples/" + id,
@@ -85,7 +99,7 @@ var handleFormSubmit = function(event) {
   };
 
   if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+    // alert("You must enter an example text and description!");
     return;
   }
 
@@ -116,7 +130,7 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 function updatePrices() {
   API.getPrices()
   .then(function(prices) {
-    console.log(prices)
+    // console.log(prices)
     $('#price-btc').text(prices.btc);
     $('#price-eth').text(prices.eth);
     $('#price-xrp').text(prices.xrp);
@@ -129,7 +143,7 @@ function updatePrices() {
 function updatePrices_Cob() {
   API.getPrices_cob()
   .then(function(prices_cob) {
-    console.log(prices_cob)
+    // console.log(prices_cob)
     $('#price-btc-cob').text(prices_cob.btc_cob);
     $('#price-eth-cob').text(prices_cob.eth_cob);
     $('#price-xrp-cob').text(prices_cob.xrp_cob);

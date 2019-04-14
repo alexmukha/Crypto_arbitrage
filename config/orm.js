@@ -42,9 +42,9 @@ var orm = {
     var routedb = users.name.replace(/\s+/g, "").toLowerCase();
     console.log(routedb);
 
-    var s = "INSERT INTO " + tableName + " (routedb, email, password, coin1, coin2) VALUES (?,?,?,?,?)";
+    var s = "INSERT INTO " + tableName + " (routedb, login, password, coin1, coin2, coin3, coin4, coin5) VALUES (?,?,?,?,?,?,?,?)";
 
-    connection.query(s, [routedb, users.email, users.password, users.coin1, users.coin2], function(
+    connection.query(s, [routedb, users.login, users.password, users.coin1, users.coin2, users.coin3, users.coin4, users.coin5], function(
       err,
       result
     ) {

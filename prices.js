@@ -6,7 +6,7 @@ const VERBOSE = false;
 
 function console_(msg) {
   if(VERBOSE) {
-    console.log(msg);
+    // console.log(msg);
   }
 }
 

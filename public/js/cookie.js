@@ -1,0 +1,44 @@
+// Needed to create this function to readCookies. Essentially it splits up the cookie list 
+function readCookie(name) { // < --------------------------------------
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+// When users click "saveName"
+$("#saveName").on("click", function() {
+
+	// Clear the previous name in HTML 
+	$("#greeting").empty();
+
+	// Grab the User Input
+	var username = $('#yourname').val().trim();
+
+	// Clear the previous cookie by setting it it equal to nothing and its expiration date to a past time
+	document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC"; // <------------------
+
+	// Store the username as a cookie using "document.cookie" 
+	document.cookie="name=" + username; // <------------------
+
+	// Print all the cookies 
+	console.log(document.cookie);
+
+	// Recover the name by passing the cookie list through a function that breaks it down
+	var cookieName = readCookie("name");
+	console.log(cookieName);
+
+	// Display the recovered name
+	$("#greeting").append(cookieName); // <--------------------
+
+	// This line prevents the page from refreshing when a user hits "enter".
+	return false;	
+});
+
+// By default (upon load) recover the last cookie 
+var cookieName = readCookie("name");  //  <----------------------------------
+$("#greeting").append(cookieName);

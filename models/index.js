@@ -36,6 +36,12 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
+
+
+// db.loggedIn = false;
+db.loggedIn = true;
+
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

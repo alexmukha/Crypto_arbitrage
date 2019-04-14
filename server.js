@@ -4,8 +4,6 @@ var exphbs = require("express-handlebars");
 var db = require("./models");
 var prices = require("./prices")
 
-
-
 var app = express();
 var PORT = process.env.PORT || 3000;
 

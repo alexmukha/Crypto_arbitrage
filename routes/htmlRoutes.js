@@ -1,49 +1,48 @@
 var db = require("../models");
-var prices = require('../prices')
+var prices = require('../prices');
+const VERBOSE = false;
+
+function console_(msg) {
+  if(VERBOSE) {
+    // console.log(msg);
+  }
+}
 
 
 module.exports = function(app) {
-  app.get("/", function(req, res) {
-    res.render("login");
-  });
-  app.get("/users", function(req, res) {
-    res.render("users");
-  });
-  app.get("/register", function(req, res) {
-    res.render("register");
-  });
 
+  // if (db.loggedIn === true) {
   // Load index page
-  app.get("/home", function(req, res) {
+  app.get("/coins", function(req, res) {
     prices.getBin("BTC", function(btc) {
-      console.log("BTC Price:", btc);
+      console_("BTC Price:", btc);
       
       prices.getBin("ETH", function(eth) {
-        console.log("ETH  Price:", eth);
+        console_("ETH  Price:", eth);
 
         prices.getBin("EOS", function(EOS) {
-          console.log("EOS Price:", EOS);
+          console_("EOS Price:", EOS);
 
           prices.getBin("NEO", function(NEO) {
-            console.log("NEO Price:", NEO);
+            console_("NEO Price:", NEO);
 
             prices.getBin("XRP", function(XRP) {
-              console.log("XRP Price:", XRP);
+              console_("XRP Price:", XRP);
 
               prices.getCob("BTC", function(BTC_cob) {
-                console.log("XRP Price:", XRP);
+                console_("XRP Price:", XRP);
 
                 prices.getCob("ETH", function(ETH_cob) {
-                  console.log("XRP Price:", XRP);
+                  console_("XRP Price:", XRP);
 
                   prices.getCob("EOS", function(EOS_cob) {
-                    console.log("XRP Price:", XRP);
+                    console_("XRP Price:", XRP);
 
                     prices.getCob("NEO", function(NEO_cob) {
-                      console.log("XRP Price:", XRP);
+                      console_("XRP Price:", XRP);
                       
                       prices.getCob("XRP", function(XRP_cob) {
-                        console.log("XRP Price:", XRP);
+                        console_("XRP Price:", XRP);
 
                 res.render("coins", {
                   btc: btc.BTCUSDT,
@@ -68,7 +67,34 @@ module.exports = function(app) {
 });
 });
 });
+
+
+// } else {
+  //Load login page
+  app.get("/", function(req, res) {
+    res.render("login");
+  });
+// }
+
+app.get("/login", function(req, res) {
+  res.render("login");
+});
+
+// app.get("/coins", function(req, res) {
+//   res.render("coins");
+// });
+
+
+app.get("/users", function(req, res) {
+  res.render("users");
+});
+
+app.get("/register", function(req, res) {
+  res.render("register");
+});
+
 };
+
   // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {
   //   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {

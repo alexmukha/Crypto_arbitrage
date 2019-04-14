@@ -1,11 +1,9 @@
-// var Sequelize = require("sequelize");
-// var sequelize = require("../config/connection.js");
 
 module.exports = function(sequelize, DataTypes) {
   console.log("Model created!!!!!!!!!!!!!!!!!!!!!!!")
   var Users = sequelize.define("users", {
-    
-    name: DataTypes.STRING,
+
+    login: DataTypes.STRING,
     password: DataTypes.STRING,
     coin1: DataTypes.STRING,
     coin2: DataTypes.STRING,
@@ -15,5 +13,6 @@ module.exports = function(sequelize, DataTypes) {
   }, 
   {timestamps:false});
   console.log(Users);
+
   return Users;
 };

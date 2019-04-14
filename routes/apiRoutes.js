@@ -1,11 +1,12 @@
 var db = require("../models");
-var prices = require('../prices')
+var prices = require('../prices');
 // var orm = require("../models");
 const VERBOSE = false;
 
+
 function console_(msg) {
   if(VERBOSE) {
-    console.log(msg);
+    // console.log(msg);
   }
 }
 module.exports = function(app) {
@@ -76,24 +77,29 @@ module.exports = function(app) {
 });
 
 ////////////////////////////////
-app.get("/api/login/:email", function(req, res) {
-
-  db.usres.findAll({
-    where: {
-      name: req.params.email
-    }
-  })
-    .then(function(users) {
-      console.log(users)
-      res.json(users);
+// app.get("/api/login", function(req, res) {
+//   db.usres.findAll({
+//     where: {
+//       login: req.params.email
+//     }
+//   })
+//     .then(function(users) {
+//       console.log(users)
+//       res.json(users);
+//     });
+// });
+app.get("/api/login/", function(req, res) {
+  db.users.findAll({})
+    .then(function(user) {
+      res.json(user);
+      console.log(user);
     });
-
-});////////////////////////////////
-app.post("/api/register", function(req, res) {
-
+});
+////////////////////////////////
+app.post("/api/users", function(req, res) {
   // Take the request...
   var users = req.body;
-   console.log(users)
+  //  console.log(users)
   db.users.create(users).then(function(){
     res.status(201).end();
   });
@@ -105,5 +111,5 @@ app.post("/api/register", function(req, res) {
 
 });
 
-    
+   
 };
